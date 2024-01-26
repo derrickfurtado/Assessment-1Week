@@ -61,10 +61,12 @@ console.log("=============")
 
 let totalAcres = 0
 
-for (let i = 0; i < fujiAcres.length; i++){
-    totalAcres += fujiAcres[i] + galaAcres[i] + pinkAcres[i]
+// used fujiAcres.length instead of integer 7 because there is a good chance that all crops are harvested at the same time, therefore, growth to array.lenth from future harvests will reflect the same across all arrays. This will make this code durable as harvest data increases.
+
+for (let i = 0; i < fujiAcres.length; i++){                     
+    totalAcres += fujiAcres[i] + galaAcres[i] + pinkAcres[i]    // this declaration of totalAcres is adding each index of all 3 arrays and compounding the loop
 }
-console.log(`Total acres harvested this week is: `, totalAcres)
+console.log(`Total harvest this week (in acres): `, totalAcres)
 
 
 
@@ -84,9 +86,9 @@ console.log("------------------")
 
 // CODE HERE
 
-let averageDailyAcres = totalAcres / 7
+let averageDailyAcres = totalAcres / 7                      // simply calculating averageDailyAcres per day by dividing by 7 days of the week
 
-console.log("Average acres harvested per day:", averageDailyAcres)
+console.log("Average daily harvest this week (in acres):", averageDailyAcres)
 
 
 
@@ -126,11 +128,11 @@ let days = 0
 // CODE HERE
 
 while (acresLeft > 0){
-    acresLeft -= averageDailyAcres
-    days += 1
+    acresLeft -= averageDailyAcres          // subtracting the acreage productivity per day from unharvested land until = 0
+    days += 1                               // for every day of harvest production, this will count days passed.
 }
 
-console.log("Estimated workdays required to harvest the rest of the crops: ", days)
+console.log("Projected time to harvest remaining crop (in days): ", days)
 
 
 
@@ -170,15 +172,15 @@ let pinkTons = []
 
 
 for (n = 0; n < 7; n++){
-    fujiTons.push(fujiAcres[n] * 6.5)
+    fujiTons.push(fujiAcres[n] * 6.5)       // next 3 lines of code are taking each total acreage for each crop harvested and converting to output in tonnage
     galaTons.push(galaAcres[n] * 6.5)
     pinkTons.push(pinkAcres[n] * 6.5)
 } 
     
 
-console.log("Tons of Fuji Apples harvested each day: ",fujiTons)
-console.log("Tons of Gala Apples harvested each day: ", galaTons)
-console.log("Tons of Pink Apples harvested each day: ", pinkTons)
+console.log("Fuji Apples harvest each day (in tons): ",fujiTons)
+console.log("Gala Apples harvest each day (in tons): ", galaTons)
+console.log("Pink Apples harvest each day (in tons): ", pinkTons)
 
 
 
@@ -212,14 +214,14 @@ let pinkPounds = 0
 
 
 for (n = 0; n < 7; n++){
-    fujiPounds += fujiTons[n] * 2000
+    fujiPounds += fujiTons[n] * 2000        // next 3 lines of code are taking output in tonnage and converting to output in lbs.
     galaPounds += galaTons[n] * 2000
     pinkPounds += pinkTons[n] * 2000
 }
 
-console.log("Total Fuji Apple pounds harvested this week: ", fujiPounds)
-console.log("Total Gala Apple pounds harvested this week: ", galaPounds)
-console.log("Total Pink Apple pounds harvested this week: ", pinkPounds)
+console.log("Fuji Apple harvest this week (in lbs): ", fujiPounds)
+console.log("Gala Apple harvest this week (in lbs): ", galaPounds)
+console.log("Pink Apple harvest this week (in lbs): ", pinkPounds)
 
 
 console.log("------------------")
@@ -242,13 +244,15 @@ console.log("------------------")
 
 // CODE HERE
 
-let fujiProfit = fujiPounds * fujiPrice
+let fujiProfit = fujiPounds * fujiPrice //as profits-per-unit (lbs), next 3 lies of code convert total-lbs-harvested and price-per-pound into profits-per-crop.
 let galaProfit = galaPounds * galaPrice
 let pinkProfit = pinkPounds * pinkPrice
 
-console.log("Profits from Fuji Apple sales to-date: ", fujiProfit)
-console.log("Profits from Gala Apple sales to-date: ", galaProfit)
-console.log("Profits from Pink Apple sales to-date: ", pinkProfit)
+
+
+console.log("Fuji Apple profits to-date: ", fujiProfit) 
+console.log("Gala Apple profits to-date: ", galaProfit)
+console.log("Pink Apple profits to-date: ", pinkProfit)
 
 
 
@@ -267,7 +271,7 @@ console.log("------------------")
 
 // CODE HERE
 
-let totalProfit = fujiProfit + galaProfit + pinkProfit
+let totalProfit = fujiProfit + galaProfit + pinkProfit  // sum of all profits for each crop type
 console.log("Total weekly profits: ", totalProfit)
 
 console.log("------------------")
